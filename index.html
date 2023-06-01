@@ -13,8 +13,32 @@
 				<h2>library</h2>
 			</div>
 		</header>
-		<main></main>
+
+		<main class="container">
+			<button class="addBookBtn" id="addBookBtn">+ Add Book</button>
+		</main>
+
 		<footer>Copyright &copy; 2023 diogopdev</footer>
+
+
+		<div class="modal" id="addBookModal">
+			<form class="addBookForm" id="addBookForm">
+				<h3>Add new book</h3>
+				<input class="input" type="text" placeholder="Title" id="title">
+				<input class="input" type="text" placeholder="Author" id="author">
+				<input class="input" type="number" placeholder="Pages" id="pages">
+				<div class="is-read">
+					<label for="isRead">Is it read?</label>
+					<input class="checkbox" type="checkbox" id="isRead">
+				</div>
+				<div class="formButtons">
+					<button class="btnSubmit" type="submit">Add Book</button>
+					<button class="btnCancelBook" id="btnCancelBook" type="button">Cancel</button>
+				</div>
+				
+			</form>
+		</div>
+
 		<script src="app.js"></script>
 	</body>
 </html>

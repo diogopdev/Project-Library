@@ -50,6 +50,11 @@ html {
 	background-color: #e4e4e7;
 }
 
+label,input{
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .container {
 	max-width: 960px;
 	margin: auto;
@@ -66,6 +71,30 @@ html {
 	padding: 30px 0 30px 0;
 }
 
+main.container{
+	margin-top: 20px;
+	text-align: center;
+}
+
+button {
+	border: none;
+	outline: none;
+	text-decoration: none;
+	cursor: pointer;
+	background-color: #e4e4e7;
+}
+
+.addBookBtn {
+	font-size: 1.6rem;
+	padding: 13px;
+	border-radius: 13px;
+	transition: filter 0.15s ease-in;
+}
+
+.addBookBtn:hover {
+	filter: brightness(90%)
+}
+
 footer {
 	position: absolute;
 	bottom: 0;
@@ -77,4 +106,80 @@ footer {
 	width: 100%;
 
 	font-weight: bold;
+}
+
+/* Modal */
+
+.modal{
+	width: 300px;
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	transition: 0.2s ease-in-out;
+	border-radius: 13px;
+	padding: 20px;
+	text-align: center;
+	background-color: white;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+.modal.active {
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.addBookForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap:20px;
+}
+
+.addBookForm h3 {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.input {
+	height: 1.3rem;
+	font-size: 1.3rem;
+	border-radius: 8px;
+	border: 1px solid #888888;
+	padding: 10px;
+	width: 90%;
+}
+
+.isRead {
+	font-size: 18px;
+}
+
+.checkbox {
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+}
+
+.btnSubmit {
+	font-size: 1rem;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #4ade80;
+	transition: filter 0.15s ease-in;
+}
+
+.btnSubmit:hover {
+	filter:brightness(90%);
+}
+
+.btnCancelBook {
+	font-size: 1rem;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #f87171;
+	transition: filter 0.15s ease-in;
+}
+
+.btnCancelBook:hover {
+	filter: brightness(90%);
 }
