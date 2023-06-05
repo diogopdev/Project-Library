@@ -45,9 +45,20 @@ table {
 }
 
 /* ---------------------------------------------------------------------------------------------- */
+:root{
+	--white: #f4f4f5;
+	--grey:#e4e4e7;
+	--green: #4ade80;
+	--red: #f87171;
+	--shadow: #888888;
+}
 html {
+	/* Footer support */
+	position: relative;
+	min-height: 100%;
+
 	font-family: 'Poppins', sans-serif;
-	background-color: #e4e4e7;
+	background-color: var(--grey);
 }
 
 label,input{
@@ -66,8 +77,8 @@ label,input{
 }
 
 .header {
-	background-color: #f4f4f5;
-	box-shadow: 1px 1px 7px #a1a1aa;
+	background-color: var(--white);
+	box-shadow: 1px 1px 7px var(--shadow);
 	padding: 30px 0 30px 0;
 }
 
@@ -81,7 +92,7 @@ button {
 	outline: none;
 	text-decoration: none;
 	cursor: pointer;
-	background-color: #e4e4e7;
+	background-color: var(--grey);
 }
 
 .addBookBtn {
@@ -98,6 +109,7 @@ button {
 footer {
 	position: absolute;
 	bottom: 0;
+	left: 0;
 	padding: 10px;
 
 	display: flex;
@@ -112,7 +124,7 @@ footer {
 
 .modal{
 	width: 300px;
-	position: absolute;
+	position: fixed;
 	z-index: 1;
 	top: 50%;
 	left: 50%;
@@ -121,8 +133,7 @@ footer {
 	border-radius: 13px;
 	padding: 20px;
 	text-align: center;
-	background-color: white;
-	box-shadow: 10px 10px 5px #888888;
+	background-color: var(--white);
 }
 
 .modal.active {
@@ -145,7 +156,7 @@ footer {
 	height: 1.3rem;
 	font-size: 1.3rem;
 	border-radius: 8px;
-	border: 1px solid #888888;
+	border: 1px solid var(--shadow);
 	padding: 10px;
 	width: 90%;
 }
@@ -164,7 +175,7 @@ footer {
 	font-size: 1rem;
 	padding: 10px;
 	border-radius: 10px;
-	background-color: #4ade80;
+	background-color: var(--green);
 	transition: filter 0.15s ease-in;
 }
 
@@ -176,7 +187,7 @@ footer {
 	font-size: 1rem;
 	padding: 10px;
 	border-radius: 10px;
-	background-color: #f87171;
+	background-color: var(--red);
 	transition: filter 0.15s ease-in;
 }
 
@@ -195,8 +206,66 @@ footer {
 
 .overlay.active {
 	display: block;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .redBorder {
 	border: 1px solid red
+}
+
+/* GRID CARDS */
+
+.grid{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	margin: 10px 0 50px 0;
+	gap: 20px;
+}
+
+.card{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 20px;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: var(--white);
+	box-shadow: 2px 2px 5px var(--shadow);
+	font-size: 20px;
+}
+
+.card-buttons{
+	display: flex;
+	flex-direction: column;
+	gap:20px;
+}
+
+.card-read {
+	font-size: 1rem;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: var(--green);
+	transition: filter 0.15s ease-in;
+}
+
+.card-not-read {
+	font-size: 1rem;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: var(--red);
+	transition: filter 0.15s ease-in;
+}
+
+.card-delete {
+	font-size: 1rem;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: var(--grey);
+	transition: filter 0.15s ease-in;
+}
+
+.card-read:hover,
+.card-not-read:hover,
+.card-delete:hover{
+	filter: brightness(90%);
 }

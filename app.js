@@ -7,6 +7,7 @@ const authorInput = document.getElementById('author')
 const pagesInput = document.getElementById('pages')
 const btnCancelBook = document.getElementById('btnCancelBook');
 const overlay = document.getElementById('overlay');
+const bookGrid = document.getElementById('grid')
 
 // Functions to create and close Modal
 const openAddBookModal = () => {
@@ -24,7 +25,7 @@ const closeAddBookModal = () => {
 	overlay.classList.remove('active')
 }
 
-// Classes for Books
+// Class and functions for Books
 let myLibrary = []
 
 class Book {
@@ -41,7 +42,53 @@ class Book {
 	}
 }
 
-const getBook = (e) => {
+const resetBookGrid = () => {
+	bookGrid.innerHTML = ''
+}
+
+const createCard = () => {
+	for(let i = 0; i < myLibrary.length; i++){
+		const card = document.createElement('div')
+		const cardTitle = document.createElement('div')
+		const cardAuthor = document.createElement('div')
+		const cardPages = document.createElement('div')
+		const cardButtons = document.createElement('div')
+		const readButton = document.createElement('button')
+		const deleteButton = document.createElement('button')
+
+		card.setAttribute('data-index', i)
+		card.classList.add('card')
+		cardTitle.classList.add('card-title')
+		cardAuthor.classList.add('card-author')
+		cardPages.classList.add('card-pages')
+		cardButtons.classList.add('card-buttons')
+		deleteButton.classList.add('card-delete')
+
+		cardTitle.textContent = '"' + myLibrary[i].title + '"' 
+		cardAuthor.textContent = myLibrary[i].author
+		cardPages.textContent = myLibrary[i].pages + ' pages'
+		deleteButton.textContent = 'Delete'
+
+		if (myLibrary[i].isRead){
+			readButton.textContent = 'Read'
+			readButton.classList.add('card-read')
+		} else {
+			readButton.textContent = 'Not Read'
+			readButton.classList.add('card-not-read')
+		}
+
+		bookGrid.appendChild(card)
+		card.appendChild(cardTitle)
+		card.appendChild(cardAuthor)
+		card.appendChild(cardPages)
+		card.appendChild(cardButtons)
+		cardButtons.appendChild(readButton)
+		cardButtons.appendChild(deleteButton)
+	}
+	
+}
+
+const getBook = (e) => { //Gets inputs, calls(checkInput) and pushes to myLibrary[array]
 	e.preventDefault()
 	const title = document.getElementById('title').value
 	const author = document.getElementById('author').value
@@ -50,11 +97,13 @@ const getBook = (e) => {
 	if(checkInput(title, author, pages) === 1){
 		myLibrary.push(new Book(title, author, pages, isRead))
 		closeAddBookModal()
+		resetBookGrid()
+		createCard()
 		console.log(myLibrary)
 	}
 }
 
-const checkInput = (title, author, pages) => {
+const checkInput = (title, author, pages) => { //Checks inputs and warns with red border - return 1 means everything's OK
 	if (title == ''){
 		titleInput.classList.add('redBorder')
 		return 0
