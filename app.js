@@ -42,12 +42,6 @@ class Book {
 	}
 }
 
-// class Library {
-// 	constructor() {
-// 		this.books = []
-// 	}
-// }
-
 const resetBookGrid = () => {
 	bookGrid.innerHTML = ''
 }
@@ -151,7 +145,7 @@ bookGrid.addEventListener('click', (e) => { // Read and Not Read Toggle
 	}
 })
 
-bookGrid.addEventListener('click', (e) => {
+bookGrid.addEventListener('click', (e) => { // Deletes Book and refreshes cards
 	if(e.target.classList.contains('card-delete')){
 		const card = e.target.closest('.card')
 		const dataIndex = card.getAttribute('data-index')
