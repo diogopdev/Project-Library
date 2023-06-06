@@ -42,6 +42,12 @@ class Book {
 	}
 }
 
+// class Library {
+// 	constructor() {
+// 		this.books = []
+// 	}
+// }
+
 const resetBookGrid = () => {
 	bookGrid.innerHTML = ''
 }
@@ -123,6 +129,38 @@ const checkInput = (title, author, pages) => { //Checks inputs and warns with re
 		pagesInput.classList.remove('redBorder')
 	return 1
 }
+
+
+bookGrid.addEventListener('click', (e) => { // Read and Not Read Toggle
+	if(e.target.classList.contains('card-read')){
+		const card = e.target.closest('.card')
+		const dataIndex = card.getAttribute('data-index')
+		myLibrary[dataIndex].isRead = false
+		e.target.textContent = 'Not Read'
+		e.target.classList.remove('card-read')
+		e.target.classList.add('card-not-read')
+		console.log(myLibrary[dataIndex])
+	} else if (e.target.classList.contains('card-not-read')){
+		const card = e.target.closest('.card')
+		const dataIndex = card.getAttribute('data-index')
+		myLibrary[dataIndex].isRead = true
+		e.target.textContent = 'Read'
+		e.target.classList.add('card-read')
+		e.target.classList.remove('card-not-read')
+		console.log(myLibrary[dataIndex])
+	}
+})
+
+bookGrid.addEventListener('click', (e) => {
+	if(e.target.classList.contains('card-delete')){
+		const card = e.target.closest('.card')
+		const dataIndex = card.getAttribute('data-index')
+		myLibrary.splice(dataIndex, 1)
+		resetBookGrid()
+		createCard()
+		console.log(myLibrary)
+	}
+})
 
 // Button Clicks and function calls
 addBookBtn.onclick = openAddBookModal //Opens Modal
