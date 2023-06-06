@@ -52,6 +52,11 @@ table {
 	--red: #f87171;
 	--shadow: #888888;
 }
+
+*{
+	box-sizing: border-box;
+}
+
 html {
 	/* Footer support */
 	position: relative;
@@ -153,6 +158,7 @@ footer {
 }
 
 .input {
+	box-sizing: content-box;
 	height: 1.3rem;
 	font-size: 1.3rem;
 	border-radius: 8px;
